@@ -4,45 +4,56 @@ import java.util.Scanner;
 
 public class task_2 {
     public static void main(String[] args) {
-        int[] arr = new int[5];
-        int sum = 0,
-            min = Integer.MAX_VALUE,
-            max = 0;
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите размер массива: ");
+        if (!scanner.hasNextInt()){
+            System.out.print("Ошибка! Введены неправильные параметры");
+            System.exit(-1);
+        }
+
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
 
         int i = 0;
-        while (i < arr.length) {
-            arr[i] = in.nextInt();
+        do {
+            System.out.print("Введите элемент массива №" + (i + 1) + ": ");
+
+            if (!scanner.hasNextInt()){
+                System.out.print("Ошибка! Введены неправильные параметры");
+                System.exit(-1);
+            }
+
+            arr[i] = scanner.nextInt();
+            i++;
+        } while (i < n);
+
+        int sum = 0;
+        i = 0;
+        while (i < n) {
             sum += arr[i];
             i++;
         }
 
-        i = 0;
-        while (i < arr.length) {
-            min = Math.min(min, arr[i]);
-            max = Math.max(max, arr[i]);
+        int max = arr[0];
+        int min = arr[0];
+
+        i = 1;
+        while (i < n) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+            if (arr[i] < min) {
+                min = arr[i];
+            }
             i++;
         }
-        System.out.printf("While loop results:\nsum = %d\nmin = %d\nmax = %d", sum, min, max);
 
-        sum = 0;
-        min = Integer.MAX_VALUE;
-        max = 0;
+        System.out.println("Сумма элементов массива: " + sum);
+        System.out.println("Максимальный элемент массива: " + max);
+        System.out.println("Минимальный элемент массива: " + min);
 
-        i = 0;
-        do {
-            arr[i] = in.nextInt();
-            sum += arr[i];
-            i++;
-        } while (i < arr.length);
-
-        i = 0;
-        do {
-            min = Math.min(min, arr[i]);
-            max = Math.max(max, arr[i]);
-            i++;
-        } while (i < arr.length);
-
-        System.out.printf("Do While loop results:\nsum = %d\nmin = %d\nmax = %d", sum, min, max);
+        scanner.close();
     }
 }

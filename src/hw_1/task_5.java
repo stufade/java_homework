@@ -2,24 +2,29 @@ package hw_1;
 
 import java.util.Scanner;
 
-class FactorialCounter {
-    double count(int num) {
-        double fact = 1;
-        for (int i = 2; i <= num; i++) {
-            fact = fact * i;
-        }
-        return fact;
-    }
-}
-
 public class task_5 {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число для определения факториала: ");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Введены неправильные параметры.");
+            System.exit(-1);
+        }
+        int number = scanner.nextInt();
+        long factorial = calculateFactorial(number);
 
-        int n = in.nextInt();
+        System.out.println("Факториал числа " + number + " равен " + factorial);
+    }
 
-        FactorialCounter c = new FactorialCounter();
-
-        System.out.println(c.count(n));
+    public static long calculateFactorial(int n) {
+        if (n < 1 || n > 20) {
+            System.out.println("Введены неправильные параметры. Невозможно определить факториал");
+            System.exit(-1);
+        }
+        long factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
     }
 }

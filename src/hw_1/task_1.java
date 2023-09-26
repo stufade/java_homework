@@ -4,18 +4,32 @@ import java.util.Scanner;
 
 public class task_1 {
     public static void main(String[] args) {
-        int[] arr = new int[5];
-        int sum = 0;
-        Scanner in = new Scanner(System.in);
-
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = in.nextInt();
-            sum += arr[i];
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите целое число - количество элементов массива: ");
+        int sizeArray;
+        if (!scanner.hasNextInt()) {
+            System.out.println("Ошибка! Введено нецелое число");
+            System.exit(-1);
         }
 
-        float average = (float) sum / arr.length;
+        sizeArray = scanner.nextInt();
+        int[] array = new int[sizeArray];
+        int sum = 0;
+        for (int i = 0; i < sizeArray; i++) {
+            System.out.print("Введите значение " + (i + 1) + " -го элемента массива: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("Ошибка! Введено нецелое число");
+                System.exit(-1);
+            }
+            array[i] = scanner.nextInt();
+            sum += array[i];
+        }
 
-        System.out.println(sum);
-        System.out.println(average);
+        double average = (double) sum / sizeArray;
+
+        System.out.println("Сумма элементов массива: " + sum);
+        System.out.println("Среднее арифметическое элементов массива: " + average);
+
+        scanner.close();
     }
 }

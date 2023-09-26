@@ -5,7 +5,7 @@ public class task_4 {
         double val = 0;
         for (int i = 1; i <= 10; i++) {
             val += (double) 1/i;
-            System.out.printf("%,.2f\n", val);
+            System.out.printf("Число %d: %.3f%n", i, val);
         }
     }
 }
