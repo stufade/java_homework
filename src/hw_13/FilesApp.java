@@ -7,13 +7,13 @@ import java.util.Scanner;
 
 public class FilesApp {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Введите команду:\n" +
                     "1 - чтение\n2 - запись в файл\n" +
                     "3 - перезапись существуещего файла\n" +
                     "0 - выход");
             int numAction;
-            Scanner scanner = new Scanner(System.in);
             numAction = scanner.nextInt();
             scanner.nextLine();
             switch (numAction) {
@@ -55,9 +55,8 @@ public class FilesApp {
                     }
                     break;
                 case 0:
-                    break;
+                    return;
             }
-            scanner.close();
         }
     }
 }
