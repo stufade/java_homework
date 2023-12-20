@@ -1,10 +1,12 @@
 
 class InvalidINNException extends NumberFormatException {
     private String errorDetails;
+
     public InvalidINNException(String message, String errorDetails) {
         super(message);
         this.errorDetails = errorDetails;
     }
+
     public String getErrorDetails() {
         return errorDetails;
     }
@@ -13,13 +15,16 @@ class InvalidINNException extends NumberFormatException {
 class Client {
     private String fullName;
     private String INN;
+
     public Client(String fullName, String INN) {
         this.fullName = fullName;
         this.INN = INN;
     }
+
     public void validateINN() throws InvalidINNException {
         if (INN.length() != 10) {
-            throw new InvalidINNException("Недействительный ИНН: " + INN, "ИНН должен содержать только цифровые символы.");
+            throw new InvalidINNException("Недействительный ИНН: " + INN,
+                    "ИНН должен содержать только цифровые символы.");
         }
 
         if (!INN.matches("\\d+")) {
